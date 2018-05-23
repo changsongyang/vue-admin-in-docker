@@ -121,6 +121,33 @@ export const appRouter = [
         }]
     },
     {
+        path: '/order',
+        icon: 'key',
+        name: 'order',
+        title: '订单列表',
+        component: Main,
+        children: [{
+            path: 'package-order',
+            title: '套餐订单',
+            name: 'package-order',
+            component: () => import('@/views/order/package-order/package-order.vue')
+        }]
+    },
+    {
+        path: '/contract',
+        icon: 'key',
+        name: 'contract',
+        title: '合同列表',
+        component: Main,
+        children: [{
+            path: 'tianwei-contract',
+            title: '天威证书',
+            name: 'tianwei-contract',
+            component: () => import('@/views/contract/tianwei-contract/tianwei-contract.vue')
+        }]
+    },
+
+    {
         path: '/access',
         icon: 'key',
         name: 'access',
