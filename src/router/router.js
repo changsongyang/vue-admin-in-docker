@@ -67,25 +67,25 @@ export const otherRouter = {
 // 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
 export const appRouter = [
     {
-        path: 'account',
+        path: '/audit',
         icon: 'key',
-        name: 'account',
+        name: 'audit',
         title: '帐号审核',
         component: Main,
         children: [{
-            path: 'account-personal',
+            path: 'audit-personal',
             title: '个人帐号审核',
-            name: 'user-personal',
-            component: () => import('@/views/account/account-personal/personal.vue')
+            name: 'audit-personal',
+            component: () => import('@/views/audit/audit-personal/audit-personal.vue')
         },{
-            path: 'account-company',
+            path: 'audit-company',
             title: '企业帐号审核',
-            name: 'company',
-            component: () => import('@/views/account/account-company/company.vue')
+            name: 'audit-company',
+            component: () => import('@/views/audit/audit-company/audit-company.vue')
         }]
     },
     {
-        path: 'app',
+        path: '/app',
         icon: 'key',
         name: 'app',
         title: '套餐应用审核',
@@ -103,7 +103,7 @@ export const appRouter = [
         }]
     },
     {
-        path: 'user',
+        path: '/user',
         icon: 'key',
         name: 'user',
         title: '用户列表',
@@ -112,12 +112,12 @@ export const appRouter = [
             path: 'user-personal',
             title: '个人用户',
             name: 'user-personal',
-            component: () => import('@/views/user/user-personal/personal.vue')
+            component: () => import('@/views/user/user-personal/user-personal.vue')
         },{
             path: 'user-company',
             title: '企业用户',
             name: 'user-company',
-            component: () => import('@/views/user/user-company/company.vue')
+            component: () => import('@/views/user/user-company/user-company.vue')
         }]
     },
     {
