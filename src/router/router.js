@@ -146,7 +146,19 @@ export const appRouter = [
             component: () => import('@/views/contract/tianwei-contract/tianwei-contract.vue')
         }]
     },
-
+    {
+        path: '/certificate',
+        icon: 'key',
+        name: 'certificate',
+        title: '证书列表',
+        component: Main,
+        children: [{
+            path: 'tianwei-certificate',
+            title: '天威证书',
+            name: 'tianwei-certificate',
+            component: () => import('@/views/certificate/tianwei-certificate/tianwei-certificate.vue')
+        }]
+    },
     {
         path: '/access',
         icon: 'key',
