@@ -2,6 +2,7 @@ import axios from 'axios';
 import env from '../../build/env';
 import semver from 'semver';
 import packjson from '../../package.json';
+import Cookies from 'js-cookie';
 
 let util = {
 
@@ -12,7 +13,7 @@ util.title = function (title) {
 };
 
 const ajaxUrl = env === 'development'
-    ? 'http://127.0.0.1:8888'
+    ? 'http://192.168.1.136:2333'
     : env === 'production'
         ? 'https://www.url.com'
         : 'https://debug.url.com';
@@ -21,6 +22,35 @@ util.ajax = axios.create({
     baseURL: ajaxUrl,
     timeout: 30000
 });
+
+util.post = function (url, data) {
+    const token = Cookies.get('userInfo') ? JSON.parse(Cookies.get('userInfo')).token : '';
+    if (!data) {
+        data = { token: token };
+    } else {
+        data.token = token;
+    }
+    return axios({
+        method: 'post',
+        baseURL: baseUrl,
+        url,
+        data: data,
+        timeout: 10000,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization': 'Bearer ' + token
+        }
+    }).then(
+        (response) => {
+            return checkStatus(response);
+        }
+    ).then(
+        (res) => {
+            return checkCode(res);
+        }
+    );
+};
 
 util.inOf = function (arr, targetArr) {
     let res = true;
