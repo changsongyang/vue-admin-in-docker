@@ -73,15 +73,15 @@ export const appRouter = [
         title: '帐号审核',
         component: Main,
         children: [{
-            path: 'personal',
+            path: 'account-personal',
             title: '个人帐号审核',
-            name: 'personal',
-            component: () => import('@/views/account/personal/personal.vue')
+            name: 'user-personal',
+            component: () => import('@/views/account/account-personal/personal.vue')
         },{
-            path: 'company',
+            path: 'account-company',
             title: '企业帐号审核',
             name: 'company',
-            component: () => import('@/views/account/company/company.vue')
+            component: () => import('@/views/account/account-company/company.vue')
         }]
     },
     {
@@ -106,7 +106,19 @@ export const appRouter = [
         path: 'user',
         icon: 'key',
         name: 'user',
-
+        title: '用户列表',
+        component: Main,
+        children: [{
+            path: 'user-personal',
+            title: '个人用户',
+            name: 'user-personal',
+            component: () => import('@/views/user/user-personal/personal.vue')
+        },{
+            path: 'user-company',
+            title: '企业用户',
+            name: 'user-company',
+            component: () => import('@/views/user/user-company/company.vue')
+        }]
     },
     {
         path: '/access',
