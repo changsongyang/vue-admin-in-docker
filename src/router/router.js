@@ -162,6 +162,11 @@ export const appRouter = [
             title: '天威证书',
             name: 'tianwei-certificate',
             component: () => import('@/views/certificate/tianwei-certificate/tianwei-certificate.vue')
+        },{
+            path: 'beijing-certificate',
+            title: '北京证书',
+            name: 'beijing-certificate',
+            component: () => import('@/views/certificate/beijing-certificate/beijing-certificate.vue')
         }]
     },
     {
