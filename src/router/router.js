@@ -67,6 +67,34 @@ export const otherRouter = {
 // 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
 export const appRouter = [
     {
+        path: 'account',
+        icon: 'key',
+        name: 'account',
+        title: '帐号审核',
+        component: Main,
+        children: [{
+            path: 'personal',
+            title: '个人帐号审核',
+            name: 'personal',
+            component: () => import('@/views/account/personal/personal.vue')
+        },{
+            path: 'company',
+            title: '企业帐号审核',
+            name: 'company',
+            component: () => import('@/views/account/company/company.vue')
+        }]
+    },
+    {
+        path: 'app',
+        icon: 'key',
+        name: 'app',
+        title: '套餐应用审核',
+        component: Main,
+        children: [{
+            
+        }]
+    },
+    {
         path: '/access',
         icon: 'key',
         name: 'access',
