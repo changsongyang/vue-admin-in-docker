@@ -91,8 +91,22 @@ export const appRouter = [
         title: '套餐应用审核',
         component: Main,
         children: [{
-            
+            path: 'custom-package',
+            title: '企业自定义套餐审核',
+            name: 'custom-package',
+            component: () => import('@/views/app/custom-package/custom-package.vue')
+        },{
+            path: 'open-app',
+            title: '开放平台应用审核',
+            name: 'open-app',
+            component: () => import('@/views/app/open-app/open-app.vue')
         }]
+    },
+    {
+        path: 'user',
+        icon: 'key',
+        name: 'user',
+
     },
     {
         path: '/access',
