@@ -68,7 +68,7 @@ export const otherRouter = {
 export const appRouter = [
     {
         path: '/audit',
-        icon: 'key',
+        icon: 'person-add',
         name: 'audit',
         title: '帐号审核',
         component: Main,
@@ -86,7 +86,7 @@ export const appRouter = [
     },
     {
         path: '/app',
-        icon: 'key',
+        icon: 'briefcase',
         name: 'app',
         title: '套餐应用审核',
         component: Main,
@@ -104,7 +104,7 @@ export const appRouter = [
     },
     {
         path: '/user',
-        icon: 'key',
+        icon: 'person-stalker',
         name: 'user',
         title: '用户列表',
         component: Main,
@@ -122,7 +122,7 @@ export const appRouter = [
     },
     {
         path: '/order',
-        icon: 'key',
+        icon: 'social-yen',
         name: 'order',
         title: '订单列表',
         component: Main,
@@ -135,7 +135,7 @@ export const appRouter = [
     },
     {
         path: '/contract',
-        icon: 'key',
+        icon: 'ios-folder-outline',
         name: 'contract',
         title: '合同列表',
         component: Main,
@@ -153,7 +153,7 @@ export const appRouter = [
     },
     {
         path: '/certificate',
-        icon: 'key',
+        icon: 'android-lock',
         name: 'certificate',
         title: '证书列表',
         component: Main,
