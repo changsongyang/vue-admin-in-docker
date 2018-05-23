@@ -140,10 +140,15 @@ export const appRouter = [
         title: '合同列表',
         component: Main,
         children: [{
-            path: 'tianwei-contract',
-            title: '天威证书',
-            name: 'tianwei-contract',
-            component: () => import('@/views/contract/tianwei-contract/tianwei-contract.vue')
+            path: 'online-contract',
+            title: '在线合同',
+            name: 'online-contract',
+            component: () => import('@/views/contract/online-contract/online-contract.vue')
+        },{
+            path: 'open-contract',
+            title: 'API合同',
+            name: 'open-contract',
+            component: () => import('@/views/contract/open-contract/open-contract.vue')
         }]
     },
     {
