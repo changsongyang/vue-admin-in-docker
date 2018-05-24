@@ -27,13 +27,22 @@ export const personalTableColumn = [
     },
     {
         title: '操作',
-        align: 'center',
-        key: 'status'
+        align: 'center'
+    }
+];
+
+export const personalTableData = [
+    {
+        id: '100',
+        phone: '15757125631',
+        realname: '刘美胜奇',
+        status: '1'
     }
 ];
 
 const tableData = {
-    personalTableColumn: personalTableColumn
+    personalTableColumn: personalTableColumn,
+    personalTableData: personalTableData
 };
 
 export default tableData;
