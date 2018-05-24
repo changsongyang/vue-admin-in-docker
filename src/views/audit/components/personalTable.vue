@@ -6,7 +6,7 @@
 <script>
 import { Modal } from 'iview';
 import util from '@/libs/util.js';
-import refuseReason from './personalTable.vue';
+import refuseReason from './refuseReason.vue';
 
 export default {
     name: 'personalTable',
@@ -18,9 +18,7 @@ export default {
     data () {
         return {
             columns: [],
-            personalData: [],
-            v1: '',
-            v2: ''
+            personalData: []
         };
     },
     components: {
@@ -125,32 +123,28 @@ export default {
                 },
                 on: {
                     'on-ok': () => {
+                        let v1 = '';
                         this.$Modal.confirm({
                             scrollable: true,
                             okText: '保存',
-                            render: (h) => {
+                            render: () => {
                                 return h(refuseReason, {
-                                    props: {
-
-                                    },
                                     on: {
                                         value1: (value1) => {
-                                            this.v1 = value1;
-                                        },
-                                        value2: (value2) => {
-                                            this.v2 = value2;
+                                            v1 = value1;
                                         }
                                     }
                                 });
                             },
                             onOk: (h) => {
-                                if (this.v1 === '' || this.v2 === '') {
+                                if (v1 === '') {
                                     this.$Message.error('信息填写不完整!');
+                                } else {
+                                    this.$Message.loading({
+                                        content: '正在保存..',
+                                        duration: 0
+                                    });
                                 }
-                                this.$Message.loading({
-                                    content: '正在保存..',
-                                    duration: 0
-                                });
                             }
                         });
                     }
