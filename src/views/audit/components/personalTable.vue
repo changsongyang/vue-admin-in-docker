@@ -6,6 +6,7 @@
 <script>
 import { Modal } from 'iview';
 import util from '@/libs/util.js';
+import refuseReason from './personalTable.vue';
 
 export default {
     name: 'personalTable',
@@ -17,8 +18,13 @@ export default {
     data () {
         return {
             columns: [],
-            personalData: []
+            personalData: [],
+            v1: '',
+            v2: ''
         };
+    },
+    components: {
+        refuseReason
     },
     created () {
         this.init();
@@ -47,8 +53,7 @@ export default {
         getViewButton (h, row) {
             return h('Button', {
                 props: {
-                    type: 'text',
-                    color: 'blue'
+                    type: 'text'
                 },
                 on: {
                     click: () => {
@@ -70,7 +75,7 @@ export default {
             }, [
                 h('Button', {
                     style: {
-                        margin: '0 5px'
+                        margin: '0 -15px'
                     },
                     props: {
                         type: 'info',
@@ -101,7 +106,7 @@ export default {
             }, [
                 h('Button', {
                     style: {
-                        margin: '0 5px'
+                        margin: '0 10px'
                     },
                     props: {
                         type: 'success',
@@ -111,27 +116,55 @@ export default {
             ]);
         },
         getRefuseButton (h, row) {
-            return h('Button', {
+            return h('Poptip', {
                 props: {
                     confirm: true,
                     title: '你确定要拒绝审核吗？',
-                    type: 'text'
+                    type: 'text',
+                    transfer: true
                 },
                 on: {
                     'on-ok': () => {
-//                util.post()
+                        this.$Modal.confirm({
+                            scrollable: true,
+                            okText: '保存',
+                            render: (h) => {
+                                return h(refuseReason, {
+                                    props: {
+
+                                    },
+                                    on: {
+                                        value1: (value1) => {
+                                            this.v1 = value1;
+                                        },
+                                        value2: (value2) => {
+                                            this.v2 = value2;
+                                        }
+                                    }
+                                });
+                            },
+                            onOk: (h) => {
+                                if (this.v1 === '' || this.v2 === '') {
+                                    this.$Message.error('信息填写不完整!');
+                                }
+                                this.$Message.loading({
+                                    content: '正在保存..',
+                                    duration: 0
+                                });
+                            }
+                        });
                     }
                 }
             }, [
                 h('Button', {
                     style: {
-                        margin: '0 5px'
+                        margin: '0 0'
                     },
                     props: {
                         type: 'error',
                         placement: 'top'
                     }
-                }, '通过')
+                }, '拒绝')
             ]);
         }
     },
