@@ -2,12 +2,12 @@
  * @file audit-company.vue 
  * @author liumapp 
  * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com 
+ * @homepage http://www.liumapp.com
  * @date 5/24/18 
  */  
 <template>
 <div>
-    <company-table refs="company" v-model="companyTableData" :companyColumn="companyTableColumn"></company-table>
+    <company-table refs="company" v-model="companyTableData" :companyTableColumn="companyTableColumn"></company-table>
 </div>
 </template>
 <script>
