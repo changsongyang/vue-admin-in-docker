@@ -1,3 +1,10 @@
+/** 
+ * @file personalTable.vue 
+ * @author liumapp 
+ * @email liumapp.com@gmail.com
+ * @homepage http://www.liumapp.com 
+ * @date 5/24/18 
+ */  
 <template>
     <div>
         <Table :ref="refs" :columns="personalColumn" :data="personalData" border disabled-hover></Table>
