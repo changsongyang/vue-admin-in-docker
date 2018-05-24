@@ -3,7 +3,7 @@ import env from '../../build/env';
 import semver from 'semver';
 import packjson from '../../package.json';
 import Cookies from 'js-cookie';
-import iView from 'iview';
+import { Message } from 'iview';
 
 let util = {
 
@@ -72,7 +72,7 @@ util.checkStatus = function checkStatus (response) {
         return response;
         // 如果不需要除了data之外的数据，可以直接 return response.data
     }
-    iView.Message('网络异常');
+    Message.warning('网络异常');
     // 异常状态下，把错误信息返回去
     return {
         status: -404,

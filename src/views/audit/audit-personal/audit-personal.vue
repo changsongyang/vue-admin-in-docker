@@ -1,7 +1,14 @@
 <template>
-<div>
-    hello world
-</div>
+
 </template>
 <script>
+import tableData from '../components/tableData';
+export default {
+    data () {
+        return {
+            tableData: [],
+
+        };
+    }
+};
 </script>
