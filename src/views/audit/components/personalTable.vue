@@ -144,6 +144,11 @@ export default {
                                         content: '正在保存..',
                                         duration: 0
                                     });
+                                    util.post('personal-api/api/personal/admincheck/chkmaterial', {userid: row.userid, status: 0, reson: v1}).then(res => {
+                                        this.$Message.destroy();
+                                        this.$Message.success('拒绝审核成功');
+                                        this.$parent.getData();
+                                    });
                                 }
                             }
                         });
