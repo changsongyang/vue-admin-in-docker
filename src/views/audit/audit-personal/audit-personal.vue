@@ -6,6 +6,7 @@
 <script>
 import tableData from '../components/tableData';
 import personalTable from '../components/personalTable.vue';
+import util from '@/libs/util.js';
 export default {
     name: 'audit-personal',
     components: {
@@ -20,7 +21,9 @@ export default {
     methods: {
         getData () {
             this.personalTableColumn = tableData.personalTableColumn;
-            this.personalTableData = tableData.personalTableData;
+            util.post('personal-api/api/personal/admincheck/getchklist').then(res => {
+                this.personalTableData = res.data.content;
+            });
         }
     },
     created () {
