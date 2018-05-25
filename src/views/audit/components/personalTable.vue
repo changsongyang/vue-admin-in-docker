@@ -62,7 +62,7 @@ export default {
                 },
                 on: {
                     click: () => {
-                        util.post('admin-api/admin/admincheck/getonedet', {id: row.id}).then(res => {
+                        util.post('admin-api/admin/check/personaldetail', {id: row.id}).then(res => {
                             let content = '';
                             content += '真实姓名: ' + `${res.data.content.realname}` + '<br>';
                             content += '身份证号码: ' + `${res.data.content.identitycode}` + '<br>';
@@ -99,7 +99,7 @@ export default {
                 },
                 on: {
                     'on-ok': () => {
-                        util.post('admin-api/admin/admincheck/chkmaterial', {
+                        util.post('admin-api/admin/check/chkmaterial', {
                             userid: row.userid,
                             status: 1
                         }).then(res => {
@@ -151,7 +151,7 @@ export default {
                                         content: '正在保存..',
                                         duration: 0
                                     });
-                                    util.post('admin-api/admin/admincheck/chkmaterial', {userid: row.userid, status: 0, reson: v1}).then(res => {
+                                    util.post('admin-api/admin/check/chkmaterial', {userid: row.userid, status: 0, reson: v1}).then(res => {
                                         this.$Message.destroy();
                                         this.$Message.success('拒绝审核成功');
                                         this.$parent.getData();

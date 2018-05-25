@@ -62,7 +62,7 @@ export default {
                 },
                 on: {
                     click: () => {
-                        util.post('admin-api/admin/admincheck/getcompanyidentitybyid', {
+                        util.post('admin-api/admin/check/companydetail', {
                             id: row.id
                         }).then(res => {
                             this.$Modal.info({
@@ -100,7 +100,7 @@ export default {
                 },
                 on: {
                     'on-ok': () => {
-                        util.post('admin-api/admin/admincheck/chkcompanymaterial', {
+                        util.post('admin-api/admin/check/chkcompanymaterial', {
                             companyid: row.companyid,
                             status: 1
                         }).then(res => {
@@ -152,5 +152,5 @@ export default {
             this.init();
         }
     }
-}
+};
 </script>

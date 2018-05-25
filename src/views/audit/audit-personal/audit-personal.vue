@@ -29,7 +29,7 @@ export default {
         getData () {
             this.personalTableColumn = tableData.personalTableColumn;
             util.post('admin-api/admin/check/personal').then(res => {
-                this.personalTableData = res.data.content;
+                this.personalTableData = res.data.content.datalist;
             });
         }
     },

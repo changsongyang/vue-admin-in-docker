@@ -48,7 +48,8 @@ export const personalTableColumn = [
     {
         title: '操作',
         align: 'center',
-        handle: true
+        handle: true,
+        width: 300
     }
 ];
 
@@ -119,7 +120,8 @@ export const companyTableColumn = [
     {
         title: '操作',
         align: 'center',
-        handle: true
+        handle: true,
+        width: 300
     }
 ];
 
