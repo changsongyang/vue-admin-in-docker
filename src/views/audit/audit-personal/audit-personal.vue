@@ -28,7 +28,7 @@ export default {
     methods: {
         getData () {
             this.personalTableColumn = tableData.personalTableColumn;
-            util.post('personal-api/api/personal/admincheck/getchklist').then(res => {
+            util.post('admin-api/admin/check/personal').then(res => {
                 this.personalTableData = res.data.content;
             });
         }

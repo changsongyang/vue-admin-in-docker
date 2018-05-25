@@ -13,6 +13,8 @@
 <script>
 import util from '@/libs/util.js';
 import companyDetail from './companyDetail.vue';
+import refuseReason from './refuseReason.vue';
+
 export default {
     name: 'companyTable',
     props: {
@@ -27,7 +29,7 @@ export default {
         };
     },
     components: {
-        companyDetail
+        companyDetail, refuseReason
     },
     created () {
         this.init();
@@ -60,7 +62,7 @@ export default {
                 },
                 on: {
                     click: () => {
-                        util.post('company-api/api/employee/admincheck/getcompanyidentitybyid', {
+                        util.post('admin-api/admin/admincheck/getcompanyidentitybyid', {
                             id: row.id
                         }).then(res => {
                             this.$Modal.info({
@@ -89,10 +91,60 @@ export default {
             ]);
         },
         getPayMoneyButton (h, row) {
-            return [];
+            return h('Poptip', {
+                props: {
+                    confirm: true,
+                    title: '你确定要执行小额验证吗？',
+                    type: 'text',
+                    transfer: true
+                },
+                on: {
+                    'on-ok': () => {
+                        util.post('admin-api/admin/admincheck/chkcompanymaterial', {
+                            companyid: row.companyid,
+                            status: 1
+                        }).then(res => {
+                            this.$Message.success('打款成功!');
+                            this.$parent.getData();
+                        });
+                    }
+                }
+            }, [
+                h('Button', {
+                    style: {
+                        margin: '0 10px'
+                    },
+                    props: {
+                        type: 'success',
+                        placement: 'top'
+                    }
+                }, '小额验证')
+            ]);
         },
         getRefuseButton (h, row) {
-            return [];
+            return h('Poptip', {
+                props: {
+                    confirm: true,
+                    title: '你确定要拒绝审核吗？',
+                    type: 'text',
+                    transfer: true
+                },
+                on: {
+                    'on-ok': () => {
+
+                    }
+                }
+            }, [
+                h('Button', {
+                    style: {
+                        margin: '0 0'
+                    },
+                    props: {
+                        type: 'error',
+                        placement: 'top'
+                    }
+                }, '拒绝')
+            ]);
         }
     },
     watch: {

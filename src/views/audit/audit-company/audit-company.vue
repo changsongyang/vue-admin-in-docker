@@ -28,13 +28,13 @@ export default {
     methods: {
         getData () {
             this.companyTableColumn = tableData.companyTableColumn;
-            util.post('company-api/api/employee/admincheck/findcompanymaterial').then(res => {
-                this.companyTableData = res.data.content;
+            util.post('admin-api/admin/check/company').then(res => {
+                this.companyTableData = res.data.content.datalist;
             });
         }
     },
     created () {
         this.getData();
     }
-}
+};
 </script>
