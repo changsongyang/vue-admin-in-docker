@@ -6,10 +6,13 @@
  * @date 5/25/18
  */
 <template>
+<div>
+    <user-personal-table refs="user-personal-table" v-model="userPersonalTableData" :userPersonalTableColumn="userPersonalTableColumn"></user-personal-table>
+</div>
 </template>
 <script>
-import tableData from '../components/tableData.js';
-import util from '@/libs/util.js';
+import tableData from '../components/tableData';
+import util from '@/libs/util';
 import userPersonalTable from '../components/userPersonalTable.vue';
 export default {
     name: 'user-personal',
@@ -18,18 +21,19 @@ export default {
     },
     data () {
         return {
-            personalTableColumn: [],
-            personalTableData: []
+            userPersonalTableColumn: [],
+            userPersonalTableData: []
         };
     },
     methods: {
         getData () {
-            this.personalTableColumn = tableData.personalTableColumn;
+            this.userPersonalTableColumn = tableData.personalUserTableColumn;
             util.post('admin-api/admin/user/list', {
                 type: 0,
-                pageno: 1
+                pageno: 1,
+                pagesize: 20
             }).then(res => {
-                this.personalTableData = res.data.content.datalist;
+                this.userPersonalTableData = res.data.content.datalist;
             });
         }
     },
