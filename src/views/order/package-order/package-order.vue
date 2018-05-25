@@ -30,8 +30,6 @@ export default {
         getData () {
             this.packageOrderTableColumn = tableData.packageOrderTableColumn;
             util.post('admin-api/admin/order/list', {
-                status: '*',
-                ptype: '*',
                 pageno: 1,
                 pagesize: 20
             }).then(res => {
