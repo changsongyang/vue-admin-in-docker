@@ -7,7 +7,10 @@
  */
 <template>
 <div>
-hello there {{ detail }}
+    hello there {{ detail }}
+    公司名称: {{detail.name}}
+    <br>
+    
 </div>
 </template>
 <script>
