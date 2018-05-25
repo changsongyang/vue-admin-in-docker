@@ -8,4 +8,11 @@
 <template>
 </template>
 <script>
+import tableData from '../components/tableData';
+import util from '@/libs/util';
+import packageOrderTable from '../components/packageOrderTable.vue';
+
+export default {
+
+};
 </script>
