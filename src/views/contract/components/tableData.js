@@ -16,7 +16,9 @@ export const onlineContractColumn = [
         title: '合同id',
         align: 'center',
         width: 80,
-        key: 'id'
+        render: (h, params) => {
+            return h('span', params.row.contract.id);
+        }
     },
     {
         title: '合同编号',
