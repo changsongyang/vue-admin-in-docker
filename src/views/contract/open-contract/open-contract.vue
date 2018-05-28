@@ -8,4 +8,10 @@
 <template>
 </template>
 <script>
+export default {
+    name: 'open-contract',
+    created () {
+        this.$Message.error('该功能正在开发中.....');
+    }
+};
 </script>
