@@ -13,7 +13,34 @@ export const onlineContractColumn = [
         width: 80
     },
     {
-        
+        title: '合同id',
+        align: 'center',
+        width: 80,
+        key: 'id'
+    },
+    {
+        title: '合同编号',
+        align: 'center',
+        key: 'cno'
+    },
+    {
+        title: '合同标题',
+        align: 'center'
+    },
+    {
+        title: '创建时间',
+        align: 'center',
+        key: 'createdat'
+    },
+    {
+        title: '发起人',
+        align: 'center',
+        key: 'username'
+    },
+    {
+        title: '操作',
+        align: 'center',
+        handle: true
     }
 ];
 
