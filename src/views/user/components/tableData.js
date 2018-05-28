@@ -50,7 +50,44 @@ export const personalUserTableColumn = [
     }
 ];
 
-export const companyUserTableColumn = [];
+export const companyUserTableColumn = [
+    {
+        title: 'id',
+        type: 'index',
+        align: 'center',
+        width: 80
+    },
+    {
+        title: '企业ID',
+        align: 'center',
+        key: 'companyid'
+    },
+    {
+        title: '邮箱',
+        align: 'center',
+        key: 'email'
+    },
+    {
+        title: '创建时间',
+        align: 'center',
+        key: 'createdat'
+    },
+    {
+        title: '手机号码',
+        align: 'center',
+        key: 'phone'
+    },
+    {
+        title: '管理员名称',
+        align: 'center',
+        key: 'username'
+    },
+    {
+        title: '操作',
+        align: 'center',
+        handle: true
+    }
+];
 
 const tableData = {
     personalUserTableColumn: personalUserTableColumn,

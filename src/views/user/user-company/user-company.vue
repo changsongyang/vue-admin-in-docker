@@ -6,7 +6,7 @@
  * @date 5/25/18
  */
 <template>
-
+<user-company-table refs="user-company-table" v-model="companyUserTableData" :companyUserTableColumn="companyUserTableColumn"></user-company-table>
 </template>
 <script>
 import tableData from '../components/tableData';
@@ -31,7 +31,7 @@ export default {
                 pageno: 1,
                 pagesize: 20
             }).then(res => {
-                this.companyUserTableData = res.data.content.datalist
+                this.companyUserTableData = res.data.content.datalist;
             });
         }
     },
