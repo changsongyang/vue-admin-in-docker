@@ -23,21 +23,30 @@ export const onlineContractColumn = [
     {
         title: '合同编号',
         align: 'center',
-        key: 'cno'
+        render: (h, params) => {
+            return h('span', params.row.contract.cno);
+        }
     },
     {
         title: '合同标题',
-        align: 'center'
+        align: 'center',
+        render: (h, params) => {
+            return h('span', params.row.contract.title);
+        }
     },
     {
         title: '创建时间',
         align: 'center',
-        key: 'createdat'
+        render: (h, params) => {
+            return h('span', params.row.contract.createdat);
+        }
     },
     {
         title: '发起人',
         align: 'center',
-        key: 'username'
+        render: (h, params) => {
+            return h('span', params.row.contract.username);
+        }
     },
     {
         title: '操作',
