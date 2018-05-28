@@ -6,6 +6,7 @@
  * @date 5/25/18
  */
 <template>
+    <package-order-table refs="package-order-table" v-model="packageOrderTableData" :packageOrderTableColumn="packageOrderTableColumn"></package-order-table>
 </template>
 <script>
 import tableData from '../components/tableData';
