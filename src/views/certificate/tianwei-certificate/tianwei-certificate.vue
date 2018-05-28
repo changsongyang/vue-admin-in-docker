@@ -7,10 +7,13 @@
  */
 <template>
 <div>
-    <Switch size="large" @on-change="change">
-        <span slot="open">个人版</span>
-        <span slot="close">企业版</span>
-    </Switch>
+<i-switch size="large" @on-change="change" v-model="type">
+    <span slot="open">个人</span>
+    <span slot="close">企业</span>
+</i-switch>
+</div>
+<div>
+
 </div>
 </template>
 <script>
@@ -22,6 +25,7 @@ export default {
     },
     data () {
         return {
+            type: true,
             twPersonalCertificateColumn: [],
             twCompanyCertificateColumn: []
         };
@@ -33,8 +37,12 @@ export default {
         getCompanyData () {
             this.twCompanyCertificateColumn = tableData.twCompanyCertificateColumn;
         },
-        change () {
-            this.$Message.info('切换至: ');
+        change (status) {
+            if (status) {
+                this.$Message.info('切换至: 天威诚信的个人版本证书');
+            } else {
+                this.$Message.info('切换至: 天威诚信的企业版本证书');
+            }
         }
     },
     created () {
