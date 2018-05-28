@@ -39,6 +39,7 @@
 
 <script>
 import Cookies from 'js-cookie';
+import util from '@/libs/util';
 export default {
     data () {
         return {
@@ -60,16 +61,22 @@ export default {
         handleSubmit () {
             this.$refs.loginForm.validate((valid) => {
                 if (valid) {
-                    Cookies.set('user', this.form.userName);
-                    Cookies.set('password', this.form.password);
-                    this.$store.commit('setAvator', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg');
-                    if (this.form.userName === 'iview_admin') {
-                        Cookies.set('access', 0);
-                    } else {
-                        Cookies.set('access', 1);
-                    }
-                    this.$router.push({
-                        name: 'home_index'
+                    util.post('token-manager/unchk/auth/login/admin', {
+                        username: this.form.userName,
+                        password: this.form.password
+                    }).then(res => {
+                        if (res.data && res.data.status === 20) {
+                            Cookies.set('user', this.form.userName);
+                            Cookies.set('userInfo', JSON.stringify({
+                                'token': res.data.content
+                            }));
+                            Cookies.set('access', 1);
+                            this.$router.push({
+                                name: 'home_index'
+                            });
+                        } else {
+                            this.$Message.error('帐户或密码错误');
+                        }
                     });
                 }
             });
