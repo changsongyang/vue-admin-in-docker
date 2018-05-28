@@ -12,27 +12,35 @@
     <span slot="close">企业</span>
 </i-switch>
 </div>
-<div>
-
-</div>
 </template>
 <script>
 import tableData from '../components/tableData';
+import companyCertificate from '../components/companyCertificate.vue';
+import personalCertificate from '../components/personalCertificate.vue';
+import util from '@libs/util';
 export default {
     name: 'tw-certificate',
     components: {
-
+        companyCertificate, personalCertificate
     },
     data () {
         return {
             type: true,
             twPersonalCertificateColumn: [],
-            twCompanyCertificateColumn: []
+            twPersonalCertificateData: [],
+            twCompanyCertificateColumn: [],
+            twCompanyCertificateData: []
         };
     },
     methods: {
         getPersonalData () {
             this.twPersonalCertificateColumn = tableData.twPersonalCertificateColumn;
+            util.post('admin-api/companycert/getCompanyCerts', {
+                currpage: 1,
+                pagesize: 20
+            }).then(res => {
+                this.twPersonalCertificateData = res.data.content;
+            });
         },
         getCompanyData () {
             this.twCompanyCertificateColumn = tableData.twCompanyCertificateColumn;
