@@ -6,5 +6,13 @@
  * @date 5/28/18
  */
 
+export const twPersonalCertificateColumn = [];
 
+export const twCompanyCertificateColumn = [];
 
+const tableData = {
+    twPersonalCertificateColumn: twPersonalCertificateColumn,
+    twCompanyCertificateColumn: twCompanyCertificateColumn
+};
+
+export default tableData;
