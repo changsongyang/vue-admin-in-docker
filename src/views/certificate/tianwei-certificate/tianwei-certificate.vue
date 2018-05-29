@@ -15,8 +15,8 @@
 </div>
 <br>
 <div>
-    <personal-certificate refs="personal-certificate" v-model="personalCertificateData" :personalCertificateColumn="personalCertificateColumn"></personal-certificate>
-    <company-certificate refs=""></company-certificate>
+    <personal-certificate refs="personal-certificate" v-model="personalCertificateData" :personalCertificateColumn="personalCertificateColumn" v-if="type"></personal-certificate>
+    <company-certificate refs="company-certificate" v-model="companyCertificateData" :companyCertificateColumn="companyCertificateColumn" v-if="!type"></company-certificate>
 </div>
 </div>
 </template>
