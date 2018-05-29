@@ -31,5 +31,5 @@ export default {
             this.$emit('value1', obj.value1);
         }
     }
-}
+};
 </script>

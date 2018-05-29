@@ -11,13 +11,14 @@
     <span slot="open">个人</span>
     <span slot="close">企业</span>
 </i-switch>
+<personal-certificate :refs="personal-certificate" v-model="twPersonalCertificateData" :personalCertificateColumn="twPersonalCertificateColumn"></personal-certificate>
 </div>
 </template>
 <script>
 import tableData from '../components/tableData';
 import companyCertificate from '../components/companyCertificate.vue';
 import personalCertificate from '../components/personalCertificate.vue';
-import util from '@libs/util';
+import util from '@/libs/util';
 export default {
     name: 'tw-certificate',
     components: {
@@ -35,7 +36,7 @@ export default {
     methods: {
         getPersonalData () {
             this.twPersonalCertificateColumn = tableData.twPersonalCertificateColumn;
-            util.post('admin-api/companycert/getCompanyCerts', {
+            util.post('admin-api/personcert/queryCerts', {
                 currpage: 1,
                 pagesize: 20
             }).then(res => {
@@ -44,6 +45,12 @@ export default {
         },
         getCompanyData () {
             this.twCompanyCertificateColumn = tableData.twCompanyCertificateColumn;
+            util.post('admin-api/companycert/getCompanyCerts', {
+                currpage: 1,
+                pagesize: 20
+            }).then(res => {
+                this.twCompanyCertificateData = res.data.content;
+            });
         },
         change (status) {
             if (status) {

@@ -26,7 +26,7 @@ export default {
     methods: {
         getData () {
             this.onlineContractColumn = tableData.onlineContractColumn;
-            util.post('/admin-api/contract/getallcontracts', {
+            util.post('admin-api/contract/getallcontracts', {
                 currpage: 1,
                 pagesize: 20
             }).then(res => {
