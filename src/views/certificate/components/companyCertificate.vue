@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         init () {
-            this.companyCertificateColumn = this.columns;
+            this.columns = this.companyCertificateColumn;
             this.companyCertificateData = this.value;
         }
     },

@@ -16,6 +16,7 @@
 <br>
 <div>
     <personal-certificate refs="personal-certificate" v-model="personalCertificateData" :personalCertificateColumn="personalCertificateColumn"></personal-certificate>
+    <company-certificate refs=""></company-certificate>
 </div>
 </div>
 </template>
@@ -43,7 +44,7 @@ export default {
             this.personalCertificateColumn = tableData.twPersonalCertificateColumn;
             util.post('admin-api/personcert/queryCerts', {
                 currpage: 1,
-                pagesize: 20
+                pagesize: 40
             }).then(res => {
                 this.personalCertificateData = res.data.content;
             });
@@ -52,7 +53,7 @@ export default {
             this.companyCertificateColumn = tableData.twCompanyCertificateColumn;
             util.post('admin-api/companycert/getCompanyCerts', {
                 currpage: 1,
-                pagesize: 20
+                pagesize: 40
             }).then(res => {
                 this.companyCertificateData = res.data.content;
             });
