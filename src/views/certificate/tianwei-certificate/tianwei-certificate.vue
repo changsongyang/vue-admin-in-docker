@@ -7,11 +7,16 @@
  */
 <template>
 <div>
-<i-switch size="large" @on-change="change" v-model="type">
-    <span slot="open">个人</span>
-    <span slot="close">企业</span>
-</i-switch>
-<personal-certificate :refs="personal-certificate" v-model="twPersonalCertificateData" :personalCertificateColumn="twPersonalCertificateColumn"></personal-certificate>
+<div>
+    <i-switch size="large" @on-change="change" v-model="type">
+        <span slot="open">个人</span>
+        <span slot="close">企业</span>
+    </i-switch>
+</div>
+<br>
+<div>
+    <personal-certificate refs="personal-certificate" v-model="personalCertificateData" :personalCertificateColumn="personalCertificateColumn"></personal-certificate>
+</div>
 </div>
 </template>
 <script>
@@ -27,29 +32,29 @@ export default {
     data () {
         return {
             type: true,
-            twPersonalCertificateColumn: [],
-            twPersonalCertificateData: [],
-            twCompanyCertificateColumn: [],
-            twCompanyCertificateData: []
+            personalCertificateColumn: [],
+            personalCertificateData: [],
+            companyCertificateColumn: [],
+            companyCertificateData: []
         };
     },
     methods: {
         getPersonalData () {
-            this.twPersonalCertificateColumn = tableData.twPersonalCertificateColumn;
+            this.personalCertificateColumn = tableData.twPersonalCertificateColumn;
             util.post('admin-api/personcert/queryCerts', {
                 currpage: 1,
                 pagesize: 20
             }).then(res => {
-                this.twPersonalCertificateData = res.data.content;
+                this.personalCertificateData = res.data.content;
             });
         },
         getCompanyData () {
-            this.twCompanyCertificateColumn = tableData.twCompanyCertificateColumn;
+            this.companyCertificateColumn = tableData.twCompanyCertificateColumn;
             util.post('admin-api/companycert/getCompanyCerts', {
                 currpage: 1,
                 pagesize: 20
             }).then(res => {
-                this.twCompanyCertificateData = res.data.content;
+                this.companyCertificateData = res.data.content;
             });
         },
         change (status) {
