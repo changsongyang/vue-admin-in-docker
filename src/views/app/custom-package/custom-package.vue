@@ -1,3 +1,10 @@
+/**
+ * @file custom-package.vue
+ * @author liumapp
+ * @email liumapp.com@gmail.com
+ * @homepage http://www.liumapp.com
+ * @date 5/29/18
+ */
 <template>
 </template>
 <script>

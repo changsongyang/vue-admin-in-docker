@@ -6,7 +6,15 @@
  * @date 5/25/18
  */
 export const packageTableColumn = [
-
+    {
+        title: '序号',
+        type: 'index',
+        align: 'center',
+        width: 80
+    },
+    {
+        // title: ''
+    }
 ];
 
 export const appTableColumn = [];
