@@ -6,7 +6,7 @@
  * @date 5/30/18
  */
 <template>
-<package-table refs="package-table" v-model=""></package-table>
+<package-table refs="package-table" v-model="packageTableData" :packageTableColumn="packageTableColumn"></package-table>
 </template>
 <script>
 import tableData from '../components/tableData';
