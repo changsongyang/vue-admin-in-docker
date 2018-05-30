@@ -6,13 +6,15 @@
  * @date 5/30/18
  */
 <template>
+<app-table refs="app-table" v-model="appTableData" :appTableColumn="appTableColumn"></app-table>
 </template>
 <script>
 import tableData from '../components/tableData';
+import appTable from '../components/appTable.vue';
 export default {
     name: 'open-app',
     components: {
-
+        appTable
     },
     data () {
         return {

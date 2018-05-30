@@ -11,6 +11,7 @@
 <script>
 import tableData from '../components/tableData';
 import packageTable from '../components/packageTable.vue';
+import util from '@/libs/util';
 export default {
     name: 'custom-package',
     components: {
@@ -28,6 +29,12 @@ export default {
             const msg = this.$Message.loading({
                 content: 'Loading....',
                 duration: 0
+            });
+            util.post('admin-api/vipproduct/selectallvip', {
+                curpage: 1,
+                size: 20
+            }).then(res => {
+                setTimeout(msg, 1000);
             });
         }
     },
