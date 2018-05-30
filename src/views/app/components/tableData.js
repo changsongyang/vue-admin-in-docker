@@ -23,11 +23,6 @@ export const packageTableColumn = [
         key: 'name'
     },
     {
-        title: '创建时间',
-        align: 'center',
-        key: 'creatat'
-    },
-    {
         title: '无限签',
         align: 'center',
         render: (h, params) => {
@@ -51,6 +46,11 @@ export const packageTableColumn = [
         title: '金额',
         align: 'center',
         key: 'price'
+    },
+    {
+        title: '创建时间',
+        align: 'center',
+        key: 'creatat'
     },
     {
         title: '截止时间',

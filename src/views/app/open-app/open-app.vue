@@ -11,6 +11,7 @@
 <script>
 import tableData from '../components/tableData';
 import appTable from '../components/appTable.vue';
+import util from '@/libs/util';
 export default {
     name: 'open-app',
     components: {
