@@ -48,6 +48,21 @@ export const packageTableColumn = [
         key: 'price'
     },
     {
+        title: '审核状态',
+        align: 'center',
+        render: (h, params) => {
+            const row = params.row;
+            const color = row.status === 0 ? 'blue' : row.status === 1 ? 'green' : 'red';
+            const text = row.status === 0 ? '等待' : row.status === 1 ? '通过' : '拒绝';
+            return h('Tag', {
+                props: {
+                    type: 'dot',
+                    color: color
+                }
+            }, text);
+        }
+    },
+    {
         title: '创建时间',
         align: 'center',
         key: 'creatat'
@@ -60,7 +75,8 @@ export const packageTableColumn = [
     {
         title: '操作',
         align: 'center',
-        handle: true
+        handle: true,
+        width: 200
     }
 ];
 
