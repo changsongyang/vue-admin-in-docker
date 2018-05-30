@@ -34,6 +34,7 @@ export default {
                 curpage: 1,
                 size: 20
             }).then(res => {
+                this.packageTableData = res.data.content;
                 setTimeout(msg, 1000);
             });
         }

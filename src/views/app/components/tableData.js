@@ -13,7 +13,27 @@ export const packageTableColumn = [
         width: 80
     },
     {
-        // title: ''
+        title: '企业名称',
+        align: 'center',
+        key: 'companyname'
+    },
+    {
+        title: '套餐名称',
+        align: 'center',
+        key: 'name'
+    },
+    {
+        title: '创建时间',
+        align: 'center',
+        key: 'creatat'
+    },
+    {
+        title: '无限签',
+        align: 'center',
+        render: (h, params) => {
+            const row = params.row;
+            
+        }
     }
 ];
 
