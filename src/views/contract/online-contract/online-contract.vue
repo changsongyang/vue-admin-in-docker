@@ -26,11 +26,16 @@ export default {
     methods: {
         getData () {
             this.onlineContractColumn = tableData.onlineContractColumn;
+            const msg = this.$Message.loading({
+                content: 'Loading....',
+                duration: 0
+            });
             util.post('admin-api/contract/getallcontracts', {
                 currpage: 1,
                 pagesize: 20
             }).then(res => {
                 this.onlineContractData = res.data.content;
+                setTimeout(msg, 1000);
             });
         }
     },

@@ -30,11 +30,16 @@ export default {
     methods: {
         getData () {
             this.packageOrderTableColumn = tableData.packageOrderTableColumn;
+            const msg = this.$Message.loading({
+                content: 'Loading....',
+                duration: 0
+            });
             util.post('admin-api/admin/order/list', {
                 pageno: 1,
                 pagesize: 20
             }).then(res => {
                 this.packageOrderTableData = res.data.content.datalist;
+                setTimeout(msg, 1000);
             });
         }
     }

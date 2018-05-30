@@ -42,11 +42,16 @@ export default {
     methods: {
         getPersonalData () {
             this.personalCertificateColumn = tableData.twPersonalCertificateColumn;
+            const msg = this.$Message.loading({
+                content: 'Loading....',
+                duration: 0
+            });
             util.post('admin-api/personcert/queryCerts', {
                 currpage: 1,
                 pagesize: 40
             }).then(res => {
                 this.personalCertificateData = res.data.content;
+                setTimeout(msg, 1000);
             });
         },
         getCompanyData () {

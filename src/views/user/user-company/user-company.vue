@@ -26,12 +26,17 @@ export default {
     methods: {
         getData () {
             this.companyUserTableColumn = tableData.companyUserTableColumn;
+            const msg = this.$Message.loading({
+                content: 'Loading....',
+                duration: 0
+            });
             util.post('admin-api/admin/user/list', {
                 type: 1,
                 pageno: 1,
                 pagesize: 20
             }).then(res => {
                 this.companyUserTableData = res.data.content.datalist;
+                setTimeout(msg, 1000);
             });
         }
     },
