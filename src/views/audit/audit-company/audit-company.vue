@@ -28,8 +28,13 @@ export default {
     methods: {
         getData () {
             this.companyTableColumn = tableData.companyTableColumn;
+            const msg = this.$Message.loading({
+                content: 'Loading....',
+                duration: 0
+            });
             util.post('admin-api/admin/check/company').then(res => {
                 this.companyTableData = res.data.content.datalist;
+                setTimeout(msg, 1000);
             });
         }
     },

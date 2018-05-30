@@ -28,8 +28,13 @@ export default {
     methods: {
         getData () {
             this.personalTableColumn = tableData.personalTableColumn;
+            const msg = this.$Message.loading({
+                content: 'Loading....',
+                duration: 0
+            });
             util.post('admin-api/admin/check/personal').then(res => {
                 this.personalTableData = res.data.content.datalist;
+                setTimeout(msg, 1000);
             });
         }
     },
