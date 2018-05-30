@@ -32,8 +32,35 @@ export const packageTableColumn = [
         align: 'center',
         render: (h, params) => {
             const row = params.row;
-            
+            const color = row.endless === 0 ? 'green' : 'red';
+            const text = row.endless === 0 ? '否' : '是';
+            return h('Tag', {
+                props: {
+                    type: 'dot',
+                    color: color
+                }
+            }, text);
         }
+    },
+    {
+        title: '签署份数',
+        align: 'center',
+        key: 'number'
+    },
+    {
+        title: '金额',
+        align: 'center',
+        key: 'price'
+    },
+    {
+        title: '截止时间',
+        align: 'center',
+        key: 'deadline'
+    },
+    {
+        title: '操作',
+        align: 'center',
+        handle: true
     }
 ];
 
