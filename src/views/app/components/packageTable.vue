@@ -9,6 +9,34 @@
 </template>
 <script>
 export default {
-    name: 'package-table'
+    name: 'package-table',
+    props: {
+        refs: String,
+        packageTableColumn: Array,
+        value: Array
+    },
+    data () {
+        return {
+            columns: [],
+            packageTableData: []
+        };
+    },
+    components: {
+
+    },
+    created () {
+        this.init();
+    },
+    methods: {
+        init () {
+            this.columns = this.packageTableColumn;
+            this.packageTableData = this.value;
+        }
+    },
+    watch: {
+        value (data) {
+            this.init();
+        }
+    }
 };
 </script>
