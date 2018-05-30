@@ -6,6 +6,7 @@
  * @date 5/30/18
  */
 <template>
+<Table :ref="refs" :columns="appTableColumn" :data="appTableData" border disabled-hover></Table>
 </template>
 <script>
 export default {
@@ -26,7 +27,8 @@ export default {
     },
     methods: {
         init () {
-
+            this.columns = this.appTableColumn;
+            this.appTableData = this.value;
         }
     },
     created () {
