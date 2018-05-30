@@ -17,7 +17,17 @@ export const packageTableColumn = [
     }
 ];
 
-export const appTableColumn = [];
+export const appTableColumn = [
+    {
+        title: '序号',
+        type: 'index',
+        align: 'center',
+        width: 80
+    },
+    {
+
+    }
+];
 
 const tableData = {
     packageTableColumn: packageTableColumn,
