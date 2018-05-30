@@ -6,13 +6,15 @@
  * @date 5/30/18
  */
 <template>
+<package-table refs="package-table" v-model=""></package-table>
 </template>
 <script>
 import tableData from '../components/tableData';
+import packageTable from '../components/packageTable.vue';
 export default {
     name: 'custom-package',
     components: {
-
+        packageTable
     },
     data () {
         return {

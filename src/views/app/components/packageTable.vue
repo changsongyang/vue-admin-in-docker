@@ -6,6 +6,7 @@
  * @date 5/30/18
  */
 <template>
+<Table :ref="refs" :columns="packageTableColumn" :data="packageTableData" border disabled-hover></Table>
 </template>
 <script>
 export default {
