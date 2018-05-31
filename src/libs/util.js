@@ -14,7 +14,7 @@ util.title = function (title) {
 };
 
 const ajaxUrl = env === 'development'
-    ? 'http://192.168.1.131:2333'
+    ? 'http://192.168.1.134:2333'
     : env === 'production'
         ? 'https://www.url.com'
         : 'https://debug.url.com';

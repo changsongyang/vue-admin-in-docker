@@ -138,7 +138,7 @@ export default {
                                     });
                                     util.post('admin-api/vipcheck/vipproductpassandrefuse', {
                                         vipproductsid: row.id,
-                                        status: 0,
+                                        status: 2,
                                         admin: 'admin',
                                         msg: v1,
                                         userid: 1,
