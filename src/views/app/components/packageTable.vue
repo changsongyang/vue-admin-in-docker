@@ -79,7 +79,17 @@ export default {
                 },
                 on: {
                     'on-ok': () => {
-                        
+                        util.post('admin-api/vipcheck/vipproductpassandrefuse', {
+                            vipproductsid: row.id,
+                            msg: '审核通过',
+                            status: 1,
+                            admin: 'admin',
+                            userid: 1,
+                            maxnumber: 1000000
+                        }).then(res => {
+                            this.$Message.success('审核通过');
+                            this.$parent.getData();
+                        });
                     }
                 }
             }, [
@@ -96,7 +106,27 @@ export default {
         },
         getRefuseButton (h, row) {
             return h('Poptip', {
-
+                props: {
+                    confirm: true,
+                    title: '你确定要拒绝审核吗？',
+                    type: 'text',
+                    transfer: true
+                },
+                on: {
+                    'on-ok': () => {
+                        util.post('admin-api/vipcheck/vipproductpassandrefuse', {
+                            vipproductsid: row.id,
+                            msg: 'null',
+                            status: 1,
+                            admin: 'admin',
+                            userid: 1,
+                            maxnumber: 1000000
+                        }).then(res => {
+                            this.$Message.success('审核通过');
+                            this.$parent.getData();
+                        });
+                    }
+                }
             }, [
                 h('Button', {
                     style: {
