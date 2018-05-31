@@ -10,6 +10,7 @@
 </template>
 <script>
 import util from '@/libs/util';
+import refuseReason from './refuseReason.vue';
 export default {
     name: 'package-table',
     props: {
@@ -114,16 +115,41 @@ export default {
                 },
                 on: {
                     'on-ok': () => {
-                        util.post('admin-api/vipcheck/vipproductpassandrefuse', {
-                            vipproductsid: row.id,
-                            msg: 'null',
-                            status: 1,
-                            admin: 'admin',
-                            userid: 1,
-                            maxnumber: 1000000
-                        }).then(res => {
-                            this.$Message.success('审核通过');
-                            this.$parent.getData();
+                        let v1 = '';
+                        this.$Modal.confirm({
+                            scrollable: true,
+                            okText: '保存',
+                            render: () => {
+                                return h(refuseReason, {
+                                    on: {
+                                        value1: (value1) => {
+                                            v1 = value1;
+                                        }
+                                    }
+                                });
+                            },
+                            onOk: (h) => {
+                                if (v1 === '') {
+                                    this.$Message.error('信息填写不完整!');
+                                } else {
+                                    this.$Message.loading({
+                                        content: '正在保存..',
+                                        duration: 0
+                                    });
+                                    util.post('admin-api/vipcheck/vipproductpassandrefuse', {
+                                        vipproductsid: row.id,
+                                        status: 0,
+                                        admin: 'admin',
+                                        msg: v1,
+                                        userid: 1,
+                                        maxnumber: 1000000
+                                    }).then(res => {
+                                        this.$Message.destroy();
+                                        this.$Message.success('拒绝审核成功');
+                                        this.$parent.getData();
+                                    });
+                                }
+                            }
                         });
                     }
                 }
