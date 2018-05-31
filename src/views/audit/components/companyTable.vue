@@ -131,7 +131,39 @@ export default {
                 },
                 on: {
                     'on-ok': () => {
-
+                        let v1 = '';
+                        this.$Modal.confirm({
+                            scrollable: true,
+                            okText: '保存',
+                            render: () => {
+                                return h(refuseReason, {
+                                    on: {
+                                        value1: (value1) => {
+                                            v1 = value1;
+                                        }
+                                    }
+                                });
+                            },
+                            onOk: (h) => {
+                                if (v1 === '') {
+                                    this.$Message.error('信息填写不完整!');
+                                } else {
+                                    this.$Message.loading({
+                                        content: '正在保存..',
+                                        duration: 0
+                                    });
+                                    util.post('admin-api/admin/check/chkmaterial', {
+                                        companyid: row.companyid,
+                                        status: 0,
+                                        remark: v1
+                                    }).then(res => {
+                                        this.$Message.destroy();
+                                        this.$Message.success('拒绝审核成功');
+                                        this.$parent.getData();
+                                    });
+                                }
+                            }
+                        });
                     }
                 }
             }, [
